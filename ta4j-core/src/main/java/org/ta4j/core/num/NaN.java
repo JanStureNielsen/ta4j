@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  *
- * Copyright (c) 2014-2017 Marc de Verdelhan, 2017-2019 Ta4j Organization & respective
+ * Copyright (c) 2014-2017 Marc de Verdelhan, 2017-2021 Ta4j Organization & respective
  * authors (see AUTHORS)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of
@@ -49,6 +49,17 @@ public class NaN implements Num {
     public static final Num NaN = new NaN();
 
     private NaN() {
+    }
+
+    /**
+     * Returns a {@code Num} version of the given {@code Number}. Warning: This
+     * method turns the number into NaN.
+     *
+     * @param val the number
+     * @return {@link #NaN}
+     */
+    public static Num valueOf(Number val) {
+        return NaN;
     }
 
     @Override
@@ -113,6 +124,16 @@ public class NaN implements Num {
 
     @Override
     public Num remainder(Num divisor) {
+        return this;
+    }
+
+    @Override
+    public Num floor() {
+        return this;
+    }
+
+    @Override
+    public Num ceil() {
         return this;
     }
 

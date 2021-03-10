@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  *
- * Copyright (c) 2014-2017 Marc de Verdelhan, 2017-2019 Ta4j Organization & respective
+ * Copyright (c) 2014-2017 Marc de Verdelhan, 2017-2021 Ta4j Organization & respective
  * authors (see AUTHORS)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of
@@ -35,8 +35,6 @@ import org.ta4j.core.num.Num;
  *      http://stockcharts.com/school/doku.php?id=chart_school:technical_indicators:moving_average_convergence_divergence_macd</a>
  */
 public class MACDIndicator extends CachedIndicator<Num> {
-
-    private static final long serialVersionUID = -6899062131135971403L;
 
     private final EMAIndicator shortTermEma;
     private final EMAIndicator longTermEma;

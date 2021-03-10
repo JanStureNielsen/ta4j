@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  *
- * Copyright (c) 2014-2017 Marc de Verdelhan, 2017-2019 Ta4j Organization & respective
+ * Copyright (c) 2014-2017 Marc de Verdelhan, 2017-2021 Ta4j Organization & respective
  * authors (see AUTHORS)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of
@@ -23,9 +23,9 @@
  */
 package org.ta4j.core.num;
 
-import java.util.function.Function;
-
 import static org.ta4j.core.num.NaN.NaN;
+
+import java.util.function.Function;
 
 /**
  * Representation of Double. High performance, lower precision.
@@ -79,7 +79,7 @@ public class DoubleNum implements Num {
 
     @Override
     public String getName() {
-    	return this.getClass().getSimpleName();
+        return this.getClass().getSimpleName();
     }
 
     @Override
@@ -109,6 +109,16 @@ public class DoubleNum implements Num {
     @Override
     public Num remainder(Num divisor) {
         return divisor.isNaN() ? NaN : new DoubleNum(delegate % ((DoubleNum) divisor).delegate);
+    }
+
+    @Override
+    public Num floor() {
+        return new DoubleNum(Math.floor(delegate));
+    }
+
+    @Override
+    public Num ceil() {
+        return new DoubleNum(Math.ceil(delegate));
     }
 
     @Override

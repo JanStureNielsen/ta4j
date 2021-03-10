@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  *
- * Copyright (c) 2014-2017 Marc de Verdelhan, 2017-2019 Ta4j Organization & respective
+ * Copyright (c) 2014-2017 Marc de Verdelhan, 2017-2021 Ta4j Organization & respective
  * authors (see AUTHORS)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of
@@ -23,17 +23,19 @@
  */
 package org.ta4j.core.mocks;
 
-import org.ta4j.core.BaseBar;
-import org.ta4j.core.num.Num;
-
 import java.time.Duration;
 import java.time.ZonedDateTime;
 import java.util.function.Function;
+
+import org.ta4j.core.BaseBar;
+import org.ta4j.core.num.Num;
 
 /**
  * A mock bar with sample data.
  */
 public class MockBar extends BaseBar {
+
+    private static final long serialVersionUID = -4546486893163810212L;
 
     private int trades = 0;
 
@@ -53,20 +55,21 @@ public class MockBar extends BaseBar {
         super(Duration.ofDays(1), endTime, 0, 0, 0, closePrice, volume, 0, 0, numFunction);
     }
 
-    public MockBar(double openPrice, double closePrice, double maxPrice, double minPrice,
+    public MockBar(double openPrice, double closePrice, double highPrice, double lowPrice,
             Function<Number, Num> numFunction) {
-        super(Duration.ofDays(1), ZonedDateTime.now(), openPrice, maxPrice, minPrice, closePrice, 1, 0, 0, numFunction);
-    }
-
-    public MockBar(double openPrice, double closePrice, double maxPrice, double minPrice, double volume,
-            Function<Number, Num> numFunction) {
-        super(Duration.ofDays(1), ZonedDateTime.now(), openPrice, maxPrice, minPrice, closePrice, volume, 0, 0,
+        super(Duration.ofDays(1), ZonedDateTime.now(), openPrice, highPrice, lowPrice, closePrice, 1, 0, 0,
                 numFunction);
     }
 
-    public MockBar(ZonedDateTime endTime, double openPrice, double closePrice, double maxPrice, double minPrice,
+    public MockBar(double openPrice, double closePrice, double highPrice, double lowPrice, double volume,
+            Function<Number, Num> numFunction) {
+        super(Duration.ofDays(1), ZonedDateTime.now(), openPrice, highPrice, lowPrice, closePrice, volume, 0, 0,
+                numFunction);
+    }
+
+    public MockBar(ZonedDateTime endTime, double openPrice, double closePrice, double highPrice, double lowPrice,
             double amount, double volume, int trades, Function<Number, Num> numFunction) {
-        super(Duration.ofDays(1), endTime, openPrice, maxPrice, minPrice, closePrice, volume, 0, 0, numFunction);
+        super(Duration.ofDays(1), endTime, openPrice, highPrice, lowPrice, closePrice, volume, amount, 0, numFunction);
         this.trades = trades;
     }
 
